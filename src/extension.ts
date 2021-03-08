@@ -25,8 +25,6 @@ export function activate(context: vscode.ExtensionContext) {
 		const response = await fetch(`https://api.datamuse.com/words?ml=${text.replace(' ', '+')}`)
 		const data = await response.json()
 
-		console.log(text)
-
 		const quickPick = vscode.window.createQuickPick();
 		quickPick.items = data.map((x: any) => ({label: x.word}))
 		quickPick.onDidChangeSelection(([item]) => {
